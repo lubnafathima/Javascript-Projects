@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="data:image/png;base64,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" type="image/x-icon">
+    <title>Color Flipper</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: brown;
+        }
+        .top {
+            height: 50%;
+            width: 100%;
+            position: absolute;
+        }
+        .top-left, .bottom-left {
+            height: 100%;
+            width: 50%;
+            float: left;
+            border: 2px solid #fff;
+        }
+        .bottom {
+            top: 50%;
+            height: 50%;
+            width: 100%;
+            position: absolute;
+        }
+        .bottom-right, .top-right {
+            height: 100%;
+            width: 50%;
+            float: left;
+            border: 2px solid #fff;
+        }
+        .bottom-right {
+            background-color: brown;
+            transition: 0.5s;
+        }
+        .container-one, .container-three, .container-four {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-10%, -50%);
+        }
+        .container-two {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-40%, -50%);
+        }
+        button {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+             border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            margin: 10px;
+           font-family: 'Courier New', Courier, monospace;
+            font-weight: 900;
+            font-style: italic;
+            font-variant: small-caps;
+            letter-spacing: 2px;
+            filter: drop-shadow(5px 5px 5px hsl(0, 0%, 0%));
+        }
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        }
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        min-height: 100px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        }
+        .dropdown-content a {
+        background-color: #000;
+        color: #fff;
+        padding: 5px 16px;
+        text-decoration: none;
+        display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #fff;
+            color: #000;
+        }
+        .dropdown:hover .dropdown-content {
+        display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div class="top-left">
+            <!-- Type 1 -->
+            <div class="container-one">
+                <p></p>
+                <button class="click">Change</button>
+            </div>
+            <!-- Type 2 -->
+            <!-- <div class="container">
+                <button class="violet" onclick="violet()">violet</button>
+                <button class="crimson" onclick="crimson()">crimson</button>
+                <button class="darkcyan" onclick="darkcyan()">darkcyan</button>
+                <button class="darkviolet" onclick="darkviolet()">darkviolet</button>
+            </div> -->
+        </div>
+        <div class="top-right">
+            <!-- Type 3 -->
+            <div class="container-two">
+                <button onclick="dd('violet')">violet</button>
+                <button onclick="dd('crimson')">crimson</button>
+                <button onclick="dd('darkcyan')">darkcyan</button>
+                <button onclick="dd('darkviolet')">darkviolet</button>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="bottom-left">
+            <!-- Type 4 -->
+            <div class="container-three">
+                <div class="dropdown">
+                    <button class="dropbtn">Change! &#9660;</button>
+                    <div class="dropdown-content">
+                    <a href="#" onclick="change('violet')">violet</a>
+                    <a href="#" onclick="change('crimson')">crimson</a>
+                    <a href="#" onclick="change('darkcyan')">darkcyan</a>
+                    <a href="#" onclick="change('darkviolet')">darkviolet</a>
+                    </div>
+                </div>          
+            </div>
+        </div>
+        <div class="bottom-right">
+            <!-- Type 5 -->
+            <div class="container-four">
+                <button id="genNew">Click Me!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS Script -->
+    <!-- Type 1 -->
+    <script>
+        const btn1 = document.querySelector(".click");
+        const body1 = document.querySelector(".top-left");
+        const color1 = ["violet", "crimson", "darkcyan", "darkviolet"];
+        btn1.addEventListener("click", () => {
+            // console.log("Working");
+            let change = parseInt(Math.random()*color1.length);
+            body1.style.background = color1[change];
+        })
+    </script>
+    <!-- Type 2 -->
+    <!-- <script>
+        function violet() {
+            const click = document.querySelector("body").style.background = "violet";
+        }
+        function crimson() {
+            const click = document.querySelector("body").style.background = "crimson";
+        }
+        function darkcyan() {
+            const click = document.querySelector("body").style.background = "darkcyan";
+        }
+        function darkviolet() {
+            const click = document.querySelector("body").style.background = "darkviolet";
+        }
+    </script> -->
+    <!-- Type 3 -->
+    <script>
+        function dd(abc) {
+            let value2 = abc;
+            // console.log(value);
+            const body2 = document.querySelector(".top-right");
+            body2.style.background = value2;
+        } 
+    </script>
+    <!-- Type 4 -->
+    <script>
+        function change(abc) {
+            let value3 = abc;
+            // console.log(value);
+            const body3 = document.querySelector(".bottom-left");
+            body3.style.background = value3;
+        } 
+    </script>
+    <!-- Type 5 -->
+    <script>
+        let body4 = document.querySelector(".bottom-right");
+        const genNew = document.getElementById("genNew");
+        // let color = document.getElementsByClassName("color");
+        const setBg = () => {
+        const randomColor = Math.floor(Math.random()*16777215).toString(16);
+        body4.style.background = "#" + randomColor;
+        // color.innerHTML = "#" + randomColor;
+        }
+        genNew.addEventListener("click", setBg);
+        setBg();
+    </script>
+</body>
+</html>
