@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="shortcut icon" href="https://static-00.iconduck.com/assets.00/border-radius-icon-512x512-jdsro2fp.png" type="image/x-icon">
+    <title>Border Radius Previewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            /* position: absolute; */
+            background-attachment: fixed;
+            background: url("https://images.unsplash.com/photo-1621947081720-86970823b77a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njd8fGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .container {
+            width: 50vw;
+            height: 40vh;
+            font-family: 'Courier New', Courier, monospace;
+            color: rgba(255, 255, 255, 0.5);
+            background: rgb(29,63,185);
+            background: linear-gradient(90deg, rgba(29,63,185,1) 0%, rgba(136,51,181,1) 100%); 
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: relative;
+            text-align: center;
+            border: 0 solid black;
+            border-style: solid;
+            /* border-width: 2px;
+            border-color: solid brown; */
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+            border-bottom-left-radius: 0px;
+            margin: 30px;
+        }
+        .setting {
+            width: 100%;
+            padding: 0 5%;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            justify-content:space-between;
+        }
+        .left, .right {
+            width: 45%;
+        }
+        .card {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            color: #fff;
+        }
+        .card-header {
+            font-size: 1.5vw;
+            font-weight: 900;
+            font-family:'Courier New', Courier, monospace;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        span {
+            background-color: hotpink;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        input {
+            text-align: center;
+            outline: none;
+        }
+        #radBtn, .borBtn {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            margin: 10px;
+            padding: 5px 30px;
+            width: 60%;
+            border-radius: 20px;
+            transition: .3s ease-in-out;
+        }
+        #radBtn:hover, .borBtn:hover {
+            /* background-color:lightseagreen; */
+            background-color:hotpink;
+            color: #fff;
+        }
+        #colorG {
+            /* border-radius: 20px; */
+            width: 10%;
+        }
+        #cssCopy {
+            margin-top: 20px;
+        }
+        #copy {
+            width: 100%;
+            background-color: rgba(255, 255, 255);
+            color: #000;
+            padding: 10px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Border-Radius Previewer</h1>
+    </div>
+    <div class="setting">
+        <div class="left">
+            <div class="card text-center">
+                <div class="card-header">
+                  Radius Options
+                </div>
+                <div class="card-body">
+                    <p class="error"></p>
+                    <label for="">Top left : <br>
+                        <input type="text" id="tL" onchange="radius()">
+                        <span>px</span>
+                    </label>
+                    <label for=""> Top Right : <br>
+                        <input type="text" id="tR" onchange="radius()">
+                        <span>px</span>
+                    </label>
+                    <label for=""> Bottom Left : <br>
+                        <input type="text" id="bL" onchange="radius()">
+                        <span>px</span>
+                    </label>
+                    <label for=""> Bottom Right : <br>
+                        <input type="text" id="bR" onchange="radius()">
+                        <span>px</span>
+                    </label><br>
+                    <button id="radBtn" onclick="radius()">Apply</button>
+                </div>
+                <!-- <div class="card-footer text-muted">
+                  In px
+                </div> -->
+            </div>
+            <div id="cssCopy" class="card text-center">
+                <div class="card-header">
+                  CSS Code
+                </div>
+                <div class="card-body">
+                    <input type="text" id="copy">
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="card text-center">
+                <div class="card-header">
+                  Border Options
+                </div>
+                <div class="card-body">
+                    <label for=""> Border Width : 
+                        <input type="text" id="bWidth" onchange="border()">
+                        <span>px</span>
+                    </label>
+                    <label for="" style="margin-top: 10px;"> Border Color : 
+                        <input type="color" id="colorG" onchange="border()">
+                        <input type="text" id="colorP" readonly>
+                    </label><br>
+                    <button class="borBtn" onclick="border()">Apply</button>
+                    <br><label for="opt"> Border Style : 
+                        <select id="opt" class="form-select" aria-label="Default select example">
+                            <option selected>Select the Border Style</option>
+                            <option value="1">solid</option>
+                            <option value="2">dashed</option>
+                            <option value="3">dotted</option>
+                            <option value="4">double</option>
+                            <option value="5">groove</option>
+                            <option value="6">inset</option>
+                            <option value="7">outset</option>
+                            <option value="8">ridge</option>
+                        </select>
+                        <button class="borBtn" id="btn">Apply</button>
+                    </label>
+                    
+                </div>
+                <!-- <div class="card-footer text-muted">
+                  2 days ago
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <script>
+                // get border radius
+                let cont = document.querySelector(".container");
+        let topL = document.getElementById("tL")//.value;
+        let topR = document.getElementById("tR")//.value;
+        let botR = document.getElementById("bR")//.value;
+        let botL = document.getElementById("bL")//.value;
+        function radius() {
+            console.log('inside radius function')
+            cont.style.borderTopLeftRadius = topL.value + "px";
+            cont.style.borderTopRightRadius = topR.value + "px";
+            cont.style.borderBottomRightRadius = botR.value + "px";
+            cont.style.borderBottomLeftRadius = botL.value + "px";
+            generate_css()
+        }
+        // get border width
+        let borW = document.getElementById('bWidth')//document.querySelector("#bWidth").value;
+        let get = document.getElementById('colorG')//document.querySelector("#colorG").value;
+        let put = document.querySelector("#colorP");
+        function border() {
+            console.log('inside border function')
+            //borW.value
+            put.value = get.value;
+            cont.style.border = borW.value + "px" + " solid " + get.value;
+            generate_css()
+        }
+        let btn = document.getElementById('btn');
+        let sb = document.getElementById('opt');
+
+        btn.onclick = (e) => {
+            e.preventDefault();
+            console.log('got button click')
+            let selectedValues = [].filter
+                .call(sb.options, option => option.selected)
+                .map(option => option.text);
+            // alert(selectedValues);
+            cont.style.borderStyle = selectedValues;
+       
+            // return selectedValues;
+
+            generate_css()
+        };
+       
+
+function generate_css(){
+ // css code generate
+ let cssvalue = "border-radius: " + topL.value + "px " + topR.value + "px " + botR.value + "px " + botL.value + "px; \nborder: " +  borW.value + "px solid " + get.value + ";";
+        console.log('the css value= '+cssvalue)
+        document.getElementById("copy").value = cssvalue;
+}//fn..generate_css
+
+function get_border_style(){
+    if(sb.value === "0"){
+        return "solid"  //to have a default value for the border style 
+    }
+    else{
+        return sb.options[sb.selectedIndex].text //will return whatever text is there corresponding to the selected dropdown value
+    }
+}//fn..get_border_style
+
+        // copy onclick
+        document.getElementById("copy").onclick = function() {
+            this.select();
+            document.execCommand('copy');
+            alert('Copied Text!\n' + this.value);
+        }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+</html>
+
+<!-- /*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+body {
+    width: 100%;
+    height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    /* position: absolute; */
+    background-attachment: fixed;
+    background: url("https://images.unsplash.com/photo-1621947081720-86970823b77a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njd8fGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container {
+    width: 50vw;
+    height: 40vh;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgba(255, 255, 255, 0.5);
+    background: rgb(29,63,185);
+    background: -webkit-gradient(linear, left top, right top, from(rgba(29,63,185,1)), to(rgba(136,51,181,1)));
+    background: -o-linear-gradient(left, rgba(29,63,185,1) 0%, rgba(136,51,181,1) 100%);
+    background: linear-gradient(90deg, rgba(29,63,185,1) 0%, rgba(136,51,181,1) 100%); 
+    display: -webkit-box; 
+    display: -ms-flexbox; 
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: relative;
+    text-align: center;
+    border: 0 solid black;
+    border-style: solid;
+    /* border-width: 2px;
+    border-color: solid brown; */
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    margin: 30px;
+}
+.setting {
+    width: 100%;
+    padding: 0 5%;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack:justify;
+        -ms-flex-pack:justify;
+            justify-content:space-between;
+}
+.left, .right {
+    width: 45%;
+}
+.card {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    color: #fff;
+}
+.card-header {
+    font-size: 1.5vw;
+    font-weight: 900;
+    font-family:'Courier New', Courier, monospace;
+    background: rgba(255, 255, 255, 0.1);
+}
+span {
+    background-color: hotpink;
+    padding: 5px;
+    border-radius: 3px;
+}
+input {
+    text-align: center;
+    outline: none;
+}
+#radBtn, .borBtn {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    margin: 10px;
+    padding: 5px 30px;
+    width: 60%;
+    border-radius: 20px;
+    -webkit-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+#radBtn:hover, .borBtn:hover {
+    /* background-color:lightseagreen; */
+    background-color:hotpink;
+    color: #fff;
+}
+#colorG {
+    /* border-radius: 20px; */
+    width: 10%;
+}
+#cssCopy {
+    margin-top: 20px;
+}
+#copy {
+    width: 100%;
+    background-color: rgba(255, 255, 255);
+    color: #000;
+    padding: 10px;
+    border: none;
+} -->

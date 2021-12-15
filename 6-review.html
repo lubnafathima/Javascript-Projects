@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://i.pinimg.com/736x/df/25/ba/df25baa7c461fe39c6b5faaf0464801f.jpg" type="image/x-icon">
+    <title>Rewiew</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-image: url("https://media.istockphoto.com/photos/award-sparkling-background-picture-id1220754002?b=1&k=6&m=1220754002&s=170667a&w=0&h=UP7Yom5z2cLa6Q1OzBsig9E1UKy3kMWTzUqNc-b4FNU=");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+        }
+        .header {
+            color:cornflowerblue;
+            margin: 30px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 900;
+            font-size: 3vw;
+        }
+        #carousel {
+            width: 60%;
+            top: 50%;
+            transform: translateY(-50%);
+            height: auto;
+            background-color: rgba(255,255,255,0.5);
+            margin: 20px;
+            padding: 30px;
+            border-radius: 5px;
+            filter: drop-shadow(10px 10px 4px #fff);
+            position: absolute;
+        }
+        #photo {
+            border-radius: 50%;
+            filter: drop-shadow(10px 10px 4px cornflowerblue);
+        }
+        #name {
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            font-size: 2vw;
+            margin: 20px 0 10px 0;
+        }
+        #position {
+            color: cornflowerblue;
+            font-size: 1vw;
+            margin: 10px;
+            text-transform: uppercase;
+        }
+        #about {
+            font-size: 1.5vw;
+            text-transform: capitalize;
+        }
+        #btn-cont {}
+        button {
+            background: none;
+            border: none;
+            border-radius: 5px;
+            transition: .3s ease-in-out;
+            color: cornflowerblue;
+            margin: 10px 20px;
+            font-size: 2vw;
+            cursor: pointer;
+        }
+        button:hover {
+            background: cornflowerblue;
+            color: #fff;
+        }
+        #random {
+            border: 1px solid cornflowerblue;
+            font-size: 1.5vw;
+            padding: 5px 30px;
+            border-radius: 5px;
+        }
+        #random:hover {
+            background-color: cornflowerblue;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header"> Our Review</h1>
+        <div id="carousel">
+            <img id="photo" src="https://randomuser.me/api/portraits/men/86.jpg">
+            <h1 id="name">Steel Walsh</h1>
+            <h4 id="position">Customer Relations</h4>
+            <p id="about">ipsum nunc id enim. Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor at risus. Nunc ac sem ut dolor dapibus gravida. Aliquam tincidunt, nunc ac mattis ornare, lectus ante dictum mi, ac mattis velit justo nec ante. Maecenas mi felis, adipiscing fringilla, porttitor vulputate, posuere vulputate, lacus. Cras interdum. Nunc sollicitudin commodo</p>
+            <div id="btn-cont">
+                <button id="btn-left">&#9668;</button>
+                <button id="btn-right">&#9658;</button>    
+            </div>
+            <button id="random">Surprise Me!</button>
+        </div>
+    </div>
+    <script>
+        const rData = [
+            {
+                photo: "https://randomuser.me/api/portraits/men/52.jpg",
+                name: "Colton Chavez",
+                position: "Sales and Marketing",
+                about: "nec, leo. Morbi neque tellus, imperdiet non, vestibulum nec, euismod in, dolor. Fusce feugiat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam auctor, velit eget laoreet posuere, enim nisl elementum purus, accumsan"
+            },
+            {
+                photo: "https://randomuser.me/api/portraits/men/86.jpg",
+                name: "Steel Walsh",
+                position: "Customer Relations",
+                about: "ipsum nunc id enim. Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor at risus. Nunc ac sem ut dolor dapibus gravida. Aliquam tincidunt, nunc ac mattis ornare, lectus ante dictum mi, ac mattis velit justo nec ante."
+            },
+            {
+                photo: "https://randomuser.me/api/portraits/women/76.jpg",
+                name: "Hyatt Torres",
+                position: "Media Relations",
+                about: "cursus vestibulum. Mauris magna. Duis dignissim tempor arcu. Vestibulum ut eros non enim commodo hendrerit. Donec porttitor tellus non magna. Nam ligula elit, pretium et, rutrum non, hendrerit id, ante"
+            },
+            {
+                photo: "https://randomuser.me/api/portraits/men/17.jpg",
+                name: "Jack Mclean",
+                position: "Quality Assurance",
+                about: "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec tincidunt. Donec vitae erat vel pede blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus vitae velit egestas lacinia."
+            },
+            {
+                photo: "https://randomuser.me/api/portraits/women/26.jpg",
+                name: "Alexandra Mcgee",
+                position: "Research and Development",
+                about: "vitae risus. Duis a mi fringilla mi lacinia mattis. Integer eu lacus. Quisque imperdiet, erat nonummy ultricies ornare, elit elit fermentum risus, at fringilla purus mauris a nunc. In at pede. Cras vulputate velit eu sem."
+            }
+        ]
+        
+        const photo = document.querySelector("#photo");
+        const name = document.querySelector("#name");
+        const position = document.querySelector("#position");
+        const about = document.querySelector("#about");
+
+        const leftBtn = document.querySelector("#btn-left");
+        const rightBtn = document.querySelector("#btn-right");
+        const random = document.querySelector("#random");
+
+        let currentItem = 0;
+        window.addEventListener("DOMContentLoaded", function () {
+            showPerson(currentItem);
+        });
+        function showPerson(person) {
+            const item = rData[person];
+            photo.src = item.photo;
+            name.textContent = item.name;
+            position.textContent = item.position;
+            about.textContent = item.about;
+        }
+        // show next person
+        rightBtn.addEventListener("click", function () {
+            currentItem++;
+            if (currentItem > rData.length - 1) {
+                currentItem = 0;
+            }
+            showPerson(currentItem);
+        });
+        // show prev person
+        leftBtn.addEventListener("click", function () {
+            currentItem--;
+            if (currentItem < 0) {
+                currentItem = rData.length - 1;
+            }
+            showPerson(currentItem);
+        });
+        // random
+        random.addEventListener("click", function () {
+            currentItem = Math.floor(Math.random() * rData.length);
+            showPerson(currentItem);
+        });
+    </script>
+</body>
+</html>
