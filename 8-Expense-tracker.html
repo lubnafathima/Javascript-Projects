@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="https://images.unsplash.com/photo-1604594849809-dfedbc827105?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bW9uZXl8ZW58MHx8MHx8&auto=format&fit=crop&w=700&q=60" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+        }
+        /* code to remove input:number spinner starts here */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0; 
+        }
+
+        input[type=number] {
+            -moz-appearance:textfield; /* Firefox */
+        }
+        /* code to remove input:number spinner ends here */
+
+        .container {
+            width: 100vw;
+            height: 100vh;    
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* justify-content: center; */
+            font-weight: 100;
+        }
+        .head {}
+        .head-h1 {
+            font-size: 2.5rem;
+        }
+        .section-1 {
+            width: 100%;
+        }
+        .sec1-h2 {
+            color: #4CAF50;
+            font-size: 1.2rem;
+        }
+        label {
+            font-weight: 900;
+            font-size: 1rem;
+        }
+        .new-item {
+            width: 100%;
+        }
+        .form-top, .form-btm {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .form-btm {}
+        input {}
+        .type {}
+        .name {}
+        .date {}
+        .amount {}
+        .add-expense {
+            width: 15%;
+            background-color: #4CAF50;
+            margin: 2rem;
+            padding: .5rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 900;
+        }
+        .section-2 {
+            margin-top: 5vh;
+        }
+        .table {
+            width: 75vw;
+            background-color:#343834;
+            color: #fff;
+        }
+        .tr {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .th {}
+        .td {}
+        img {
+            width: 15%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="head">
+            <h1 class="head-h1">Expense Tracker</h1>
+        </header>
+        <section class="section-1">
+            <h2 class="sec1-h2">Add A New Item:</h2>
+            <form class="new-item">
+                <div class="form-top">
+                    <label for="type"> Type:
+                        <select name="type" id="type" required>
+                            <option class="type" value="Debit Card">Debit Card</option>
+                            <option class="type" value="Credit Card">Credit Card</option>
+                            <option class="type" value="Cash">Cash</option>
+                            <option class="type" value="Online Payment">Online Payment</option>
+                        </select>
+                    </label>
+                    <label for="name"> Name:
+                        <input type="text" class="name" placeholder="Burger King" required>
+                    </label>
+                </div>
+                <div class="form-btm">
+                    <label for="date"> Date:
+                        <input type="date" class="date" id="date" required>
+                    </label>
+                    <label for="amount"> Amount:
+                        <input type="number" class="amount" id="amount" placeholder="250" required>
+                    </label>
+                </div>
+                <a class="add-expense">Add Expense</a>
+            </form>
+        </section>
+        <div class="section-2">
+            <table class="table">
+                <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>close</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        'use strict';
+
+        let typeV = document.getElementById('type');
+        let nameV = document.querySelector('.name');
+        let dateV = document.querySelector('.date');
+        let amountV = document.querySelector('.amount');
+        let add = document.querySelector('.add-expense');
+        let table = document.querySelector('.table');
+
+        add.addEventListener("click", () => {
+            if(typeV.value && nameV.value && dateV.value && amountV.value) {
+                // creating close btn
+                let img = document.createElement("img");
+                img.src = "close1.png";
+
+                let newRow = table.insertRow(1);
+
+                let cell = newRow.insertCell(0);
+                let cell1 = newRow.insertCell(1);
+                let cell2 = newRow.insertCell(2);
+                let cell3 = newRow.insertCell(3);
+                let cell4 = newRow.insertCell(4);
+
+                cell.innerHTML = typeV.value;
+                cell1.innerHTML = nameV.value;
+                cell2.innerHTML = dateV.value;
+                cell3.innerHTML = amountV.value;
+                cell4.appendChild(img);
+
+                cell4.addEventListener("click", () => {
+                    cell4.closest("tr").remove();
+                });
+            } else {
+                alert("enter all values");
+            }
+        });
+    </script>
+</body>
+</html>
